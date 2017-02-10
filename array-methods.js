@@ -7,7 +7,7 @@ let bankBalances = dataset.bankBalances;
 */
 function greaterNumber(element, index, array) {
     if(element.amount > 100000){
-        return element;
+        return true;
     } else {
         return false;
     }
@@ -59,7 +59,6 @@ function sumAmounts(previous, current, index, array) {
 }
 
 var sumOfBankBalances = bankBalances.reduce(sumAmounts, 0);
-console.log(sumOfBankBalances);
 
 /*
   set sumOfInterests to the sum of the 18.9% interest
@@ -73,7 +72,38 @@ console.log(sumOfBankBalances);
     Delaware
   the result should be rounded to the nearest cent
  */
-var sumOfInterests = null;
+ function filterState(element, index, array) {
+     switch (element.state) {
+        case "WI":
+            return true;
+            break;
+        case "IL":
+            return true;
+            break;
+        case "WY":
+            return true;
+            break;
+        case "OH":
+            return true;
+            break;
+        case "GA":
+            return true;
+            break;
+        case "DE":
+            return true;
+            break;
+        default:
+            return false;
+     }
+ }
+
+ function sumInterest(prev, curr, index, array){
+    let interest = curr.amount * (18.9/100);
+    let total = prev + interest;
+    return Math.round(total*100)/100;
+ }
+
+ var sumOfInterests = bankBalances.filter(filterState).reduce(sumInterest, 0);
 
 /*
   set sumOfHighInterests to the sum of the 18.9% interest
