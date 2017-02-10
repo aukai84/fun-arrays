@@ -27,12 +27,13 @@ var hundredThousandairs = bankBalances.filter(greaterNumber);
   assign the resulting array to `roundedDollar`
 */
 function rounded(element, index, array) {
-    element.rounded = Math.round(element.amount);
-    roundedDollar.push(element);
+    let object = {};
+    object.rounded = Math.round(element.amount);
+    object.state = element.state;
+    return object;
 
 }
-var roundedDollar = [];
-bankBalances.forEach(rounded);
+var roundedDollar = bankBalances.map(rounded);
 /*
   set a the `amount` value for each object in bankBalances
   to the value of `amount` rounded to the nearest 10 cents
@@ -43,7 +44,13 @@ bankBalances.forEach(rounded);
     }
   assign the resulting array to `roundedDime`
 */
-var roundedDime = null;
+function changeAmount(element, index, array) {
+    let object = {};
+    object.amount = Math.round(element.amount*10)/10;
+    object.state = element.state;
+    return object;
+}
+var roundedDime = bankBalances.map(changeAmount);
 
 // set sumOfBankBalances to the sum of all amounts in bankBalances
 var sumOfBankBalances = null;
