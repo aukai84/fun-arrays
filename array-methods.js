@@ -14,7 +14,6 @@ function greaterNumber(element, index, array) {
     }
 }
 var hundredThousandairs = bankBalances.filter(greaterNumber);
-console.log(hundredThousandairs);
 
 /*
   set a new key for each object in bankBalances named `rounded`
@@ -27,8 +26,13 @@ console.log(hundredThousandairs);
     }
   assign the resulting array to `roundedDollar`
 */
-var roundedDollar = null;
+function rounded(element, index, array) {
+    element.rounded = Math.ceil(element.amount);
+    roundedDollar.push(element);
 
+}
+var roundedDollar = [];
+bankBalances.forEach(rounded);
 /*
   set a the `amount` value for each object in bankBalances
   to the value of `amount` rounded to the nearest 10 cents
