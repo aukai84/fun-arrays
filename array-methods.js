@@ -1,6 +1,5 @@
 var dataset = require('./dataset.json');
 let bankBalances = dataset.bankBalances;
-
 /*
   create an array with accounts from bankBalances that are
   greater than 100000.00
@@ -53,7 +52,14 @@ function changeAmount(element, index, array) {
 var roundedDime = bankBalances.map(changeAmount);
 
 // set sumOfBankBalances to the sum of all amounts in bankBalances
-var sumOfBankBalances = null;
+
+function sumAmounts(previous, current, index, array) {
+    let newNumber = previous + parseFloat(current.amount);
+    return Math.round(newNumber*100)/100;
+}
+
+var sumOfBankBalances = bankBalances.reduce(sumAmounts, 0);
+console.log(sumOfBankBalances);
 
 /*
   set sumOfInterests to the sum of the 18.9% interest
