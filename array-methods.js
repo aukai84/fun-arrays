@@ -27,7 +27,7 @@ var hundredThousandairs = bankBalances.filter(greaterNumber);
   assign the resulting array to `roundedDollar`
 */
 function rounded(element, index, array) {
-    element.rounded = Math.ceil(element.amount);
+    element.rounded = Math.round(element.amount);
     roundedDollar.push(element);
 
 }
