@@ -119,7 +119,42 @@ var sumOfBankBalances = bankBalances.reduce(sumAmounts, 0);
     Delaware
   the result should be rounded to the nearest cent
  */
-var sumOfHighInterests = null;
+
+
+function filterSomeStates(element, index, array) {
+     switch (element.state) {
+        case "WI":
+            return false;
+            break;
+        case "IL":
+            return false;
+            break;
+        case "WY":
+            return false;
+            break;
+        case "OH":
+            return false;
+            break;
+        case "GA":
+            return false;
+            break;
+        case "DE":
+            return false;
+            break;
+        default:
+            return true;
+     }
+ }
+
+
+
+var sumOfHighInterests =
+
+bankBalances.filter(filterState)
+
+.filter((element, index, array) => {
+
+});
 
 /*
   aggregate the sum of bankBalance amounts
